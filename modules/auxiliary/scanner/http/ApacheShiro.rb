@@ -7,8 +7,8 @@ class MetasploitModule < Msf::Auxiliary
 
   # Exploit mixins should be called first
   include Msf::Exploit::Remote::HttpClient
-  # WMAP scanner is needed for all reconnaissance 
-  include Msf::Auxiliary::WmapScanServer
+  # Scanner is needed for all reconnaissance 
+  include Msf::Auxiliary::Scanner
 
   def initialize
     super(
