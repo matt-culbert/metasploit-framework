@@ -34,10 +34,9 @@ class MetasploitModule < Msf::Auxiliary
     end
 
     begin
-      turl = tpath+'AppModule.class'
-
+    
       res = send_request_raw({
-        'uri'     => turl,
+        'uri'     => tpath,
         'method'  => 'GET',
         'version' => '1.0',
       }, 10)
