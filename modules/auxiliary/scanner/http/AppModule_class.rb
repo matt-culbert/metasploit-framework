@@ -47,11 +47,6 @@ class MetasploitModule < Msf::Auxiliary
         return
       end
 
-      if not res.body.include?("llow:")
-        vprint_status("[#{target_host}] #{tpath}AppModule.class - Doesn't contain \"llow:\"")
-        return
-      end
-
       print_status("[#{target_host}] #{tpath}AppModule.class found")
      
       result.each do |u|
