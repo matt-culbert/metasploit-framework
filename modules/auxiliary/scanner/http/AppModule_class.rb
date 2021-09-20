@@ -7,10 +7,8 @@ class MetasploitModule < Msf::Auxiliary
 
   # Exploit mixins should be called first
   include Msf::Exploit::Remote::HttpClient
+  # WMAP scanner is needed for all reconnaissance 
   include Msf::Auxiliary::WmapScanServer
-  # Scanner mixin should be near last
-  include Msf::Auxiliary::Scanner
-  include Msf::Auxiliary::Report
 
   def initialize
     super(
@@ -44,7 +42,6 @@ class MetasploitModule < Msf::Auxiliary
         'version' => '1.0',
       }, 10)
 
-
       if not res
         print_error("[#{target_host}] #{tpath}AppModule.class - No response")
         return
@@ -63,8 +60,6 @@ class MetasploitModule < Msf::Auxiliary
           :port	=> rport,
           :proto => 'tcp',
           :sname	=> (ssl ? 'https' : 'http'),
-          :data	=> u,
-          :update => :unique_data
         )
       end
 
