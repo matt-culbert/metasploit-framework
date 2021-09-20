@@ -20,7 +20,7 @@ class MetasploitModule < Msf::Auxiliary
 
     register_options(
       [
-        OptString.new('PATH', [ true,  "The find the admin page at", '/']),
+        OptString.new('PATH', [ true,  "The path to find the admin page at", '/']),
 
       ])
 
@@ -42,8 +42,8 @@ class MetasploitModule < Msf::Auxiliary
         'version' => '1.0',
       }, 10)
 
-      if not res
-        print_error("[#{target_host}] #{tpath}AppModule.class - No response")
+      if not res.code == 200
+        print_error("[#{target_host}] #{tpath}Apache Shiro not exploitable")
         return
       end
 
